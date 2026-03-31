@@ -1,6 +1,6 @@
 function solution(board, moves) {
-    const stack = [];
     var answer = 0;
+    const stack = [];
     
     for (let move of moves) {
         const col = move - 1;
@@ -18,8 +18,11 @@ function solution(board, moves) {
                 }
                 
                 break;
+                
             }
-        } 
+            
+        }
     }
+    
     return answer;
 }
