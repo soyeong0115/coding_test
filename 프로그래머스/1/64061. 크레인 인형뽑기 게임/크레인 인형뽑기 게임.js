@@ -18,11 +18,8 @@ function solution(board, moves) {
                 }
                 
                 break;
-                
-            }
-            
+            }            
         }
     }
-    
     return answer;
 }
