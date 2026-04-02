@@ -1,37 +1,30 @@
 function solution(numbers) {
+    const nums = numbers.split("");
     const set = new Set();
     
-    function dfs(current, remaining) {
-        if (current !== "") {
-            set.add(Number(current));
+    // 순열 만들기
+    function permute(arr, current) {
+        // 지금까지 뽑은 것 먼저 저장
+        if (current.length > 0) {
+            set.add(Number(current.join("")));
         }
-        
-        for (let i = 0; i < remaining.length; i++) {
-            dfs(
-                current + remaining[i],
-                remaining.slice(0, i) + remaining.slice(i + 1)
-            );
+        for (let i = 0; i < arr.length; i++) {
+            const rest = [...arr.slice(0, i), ...arr.slice(i + 1)];
+            // 스프레드 연산자 사용 -> current 배열의 내용물만 꺼내서 넣기
+            permute(rest, [...current, arr[i]]);
         }
     }
     
-    dfs("", numbers);
+    permute(nums, []);
     
-    // 소수 판별 함수
-    function isPrime(num) {
-        if (num < 2) return false;
-        
-        for (let i = 2; i <= Math.sqrt(num); i++) {
-            if (num % i === 0) return false;
+    // 소수 판별
+    function isPrime(n) {
+        if (n < 2) return false;
+        for (let i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i === 0) return false;
         }
-        
         return true;
     }
     
-    let count = 0;
-    
-    for (let num of set) {
-        if (isPrime(num)) count++;
-    }
-    
-    return count;
+    return [...set].filter(isPrime).length;
 }
