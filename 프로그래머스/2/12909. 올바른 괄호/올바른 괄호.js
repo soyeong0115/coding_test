@@ -1,6 +1,6 @@
 function solution(s){
     const stack = [];
-
+    
     for (let i = 0; i < s.length; i++) {
         if (s[i] === '(') {
             stack.push(s[i]);
@@ -9,6 +9,6 @@ function solution(s){
             stack.pop();
         }
     }
-
+    
     return stack.length === 0;
 }
