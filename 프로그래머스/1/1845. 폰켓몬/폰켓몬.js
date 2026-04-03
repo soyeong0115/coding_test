@@ -1,5 +1,5 @@
 function solution(nums) {
-    unique = new Set(nums);
+    const unique = new Set(nums);
     
     return Math.min(unique.size, nums.length / 2)
 }
