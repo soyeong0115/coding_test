@@ -11,7 +11,7 @@ function solution(answers) {
         if (answers[i] === p3[i % p3.length]) score[2]++;
     }
     
-    const max = Math.max(...score); // 스프레드 연산자 (배열을 하나씩 펼처서 넣어줌)
+    const max = Math.max(...score);
     const result = [];
     
     for (let i = 0; i < 3; i++) {
